@@ -1,0 +1,78 @@
+### testcase_06 (Push, Pop, Erase) ###
+[ERROR] Incorrect output.
+[RETURNED]
+Size: 5
+Size: 4
+Size: 3
+Pop: 1271565896 Size: 2
+Pop: 1690320558 Size: 1
+Pop: 1852625675 Size: 0
+[EXPECTED]
+Size: 5
+Size: 4
+Size: 3
+Pop: 930084711 Size: 2
+Pop: 1690320558 Size: 1
+Pop: 1852625675 Size: 0
+[POINTS] 0/9.09
+
+
+### testcase_06 (Push, Pop, Erase) ###
+[ERROR] Incorrect output.
+[RETURNED]
+Size: 5
+Size: 4
+Size: 3
+Pop: 1271565896 Size: 2
+Pop: 1690320558 Size: 1
+Pop: 1852625675 Size: 0
+[EXPECTED]
+Size: 5
+Size: 4
+Size: 3
+Pop: 930084711 Size: 2
+Pop: 1690320558 Size: 1
+Pop: 1852625675 Size: 0
+[POINTS] 0/9.09
+
+
+
+
+### testcase_07 (Push, Pop, Erase) ###
+[SUCCESS] Correct output.
+[POINTS] 9.09/9.09
+
+### testcase_07 (Push, Pop, Erase) ###
+[ERROR] Incorrect output.
+[RETURNED]
+Pop: 20
+Pop: 20
+Pop: 30
+Pop: 50
+Pop: 80
+[EXPECTED]
+Pop: 20
+Pop: 30
+Pop: 50
+Pop: 70
+Pop: 80
+[POINTS] 0/9.09
+
+
+
+
+
+
+### testcase_08 (Push, Pop, Erase) ###
+[ERROR] Incorrect output.
+[RETURNED]
+Pop: 1216657680, 1526261789, 1529169644, 1782019092, 1850951614, 1987226204, 2111371929
+Size: 0
+[EXPECTED]
+Pop: 827673016, 1216657680, 1526261789, 1529169644, 1782019092, 1850951614, 2111371929
+Size: 0
+[POINTS] 0/9.09
+
+### testcase_08 (Push, Pop, Erase) ###
+[SUCCESS] Correct output.
+[POINTS] 9.09/9.09
