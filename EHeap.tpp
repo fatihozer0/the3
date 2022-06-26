@@ -77,46 +77,19 @@ public:
     }
 
     T erase(Handle handle) {
+
+
+      /*
+      HOW TO SOLVE IS HERE
+      http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/heap-delete.html
+      */
       if (mSize == 0)
       {
         return 0;
       }
+      std::swap(handle, mHeap[mSize]);
 
-      unsigned i=0;
-      for(unsigned j = 1; j<= mSize ; j++){
-        if(Handle(j) == handle) {
-          i = j;
-          break;
-        }
-      }
 
-      std::swap(mHeap[i] , mHeap[mSize]);
-      mSize--;
-
-      while (2 * i <= mSize)
-      {
-        unsigned minChild;
-
-        if (2 * i + 1 <= mSize and mHeap[2 * i + 1] < mHeap[2 * i])
-        {
-          minChild = 2 * i + 1;
-        }
-        else
-        {
-          minChild = 2 * i;
-        }
-
-        if (mHeap[minChild] < mHeap[i])
-        {
-          std::swap(mHeap[minChild], mHeap[i]);
-          i = minChild;
-        }
-        else
-        {
-          break;
-        }
-      }
-      return mHeap[mSize];
     }
 
     ~EHeap() {
