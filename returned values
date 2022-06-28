@@ -76,3 +76,39 @@ Size: 0
 ### testcase_08 (Push, Pop, Erase) ###
 [SUCCESS] Correct output.
 [POINTS] 9.09/9.09
+
+
+/*
+      HOW TO SOLVE IS HERE
+      http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/heap-delete.html
+      */
+
+              if(mSize == 0) return 0;
+              T popped = mHeap[1];
+              std::swap(mHeap[1], mHeap[mSize]);
+              unsigned i = 1;
+              while (2 * i <= mSize)
+              {
+                  unsigned minChild;
+
+                  if (2 * i + 1 <= mSize and mHeap[2 * i + 1] < mHeap[2 * i])
+                  {
+                      minChild = 2 * i + 1;
+                  }
+                  else
+                  {
+                      minChild = 2 * i;
+                  }
+
+                  if (mHeap[minChild] < mHeap[i])
+                  {
+                      swap(mHeap[minChild], mHeap[i]);
+                      i = minChild;
+                  }
+                  else
+                  {
+                      break;
+                  }
+              }
+
+                return popped;

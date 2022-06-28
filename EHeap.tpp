@@ -1,98 +1,69 @@
 #pragma once
 
-template<typename T>
+template < typename T >
 class EHeap
 {
-private:
+private :
     class HandleData
     {
-        friend EHeap;
-    private:
+        friend EHeap ;
+    private :
+        unsigned index;
+        T value;
+
+
+/* Private fields & methods to be completed by you . */
     };
-    /* Private fields & methods to be completed by you. */
-    const unsigned mCapacity;
+
+    unsigned mCapacity;
     unsigned mSize;
-    T *mHeap;
-public:
-    typedef HandleData * Handle;
-    // Constructs an empty e-heap with a fixed capacity.
-    EHeap(unsigned capacity) : mCapacity(capacity), mSize(0), mHeap(new T[capacity + 1])
+    HandleData **mHeap;
+    HandleData *mHandle;
+
+/* Private fields & methods to be completed by you . */
+public :
+    typedef HandleData * Handle ;
+// Constructs an empty e- heap with a fixed capacity .
+    EHeap ( unsigned capacity ) : mCapacity(capacity),
+                                  mSize(0),
+                                  mHeap(new Handle[capacity+1]),
+                                  mHandle(new HandleData[capacity+1])
+    {  }
+// Returns the number of elements in the e- heap .
+    unsigned size () const { return mSize; }
+// Pushes a value into the e- heap . A new handle
+// representing the pushed value is returned .
+    Handle push ( T val )
     {
+        if(mSize == mCapacity) return nullptr;
+
+        mSize++;
+
+        mHandle[mSize].index = mSize;
+        mHandle[mSize].value = val;
+        mHeap[mSize] = &(mHandle[mSize]);
+
+        unsigned i = mSize;
+        while (i >1 && mHeap[i/2]->value > mHeap[i]->value)
+        {
+//            std::swap(mHeap[i/2], mHeap[i]);
+            Handle temp = mHeap[i/2];
+            mHeap[i/2] = mHeap[i];
+            mHeap[i] = temp;
+            i=i/2;
+        }
+        return mHeap[i];
     }
+// Pops the minimum value (or one of the minimum ) from the e- heap .
+    T pop () {
 
-    unsigned size() const {
-      return mSize;
     }
-
-    Handle push(T t) {
-
-      if(mSize == mCapacity) return nullptr;
-      mSize++;
-      unsigned i = mSize;
-      mHeap[mSize] = t;
-      while(i > 1 and mHeap[i/2] > mHeap[i]){
-        std::swap(mHeap[i/2], mHeap[i]);
-        i = i/2;
-      }
-      return Handle(i);
-    }
-
-    T pop()
+// Erases the value whose handle is given . Returns the value back .
+    T erase ( Handle handle ) { /* To be completed by you. */ }
+// Destructor . All associated memory is to be freed .
+    ~ EHeap ()
     {
-      if (mSize == 0)
-      {
-        return 0;
-      }
-      unsigned i = 1;
-      T popped = mHeap[1];
-      std::swap(mHeap[1], mHeap[mSize]);
-      mSize--;
-
-      while (2 * i <= mSize)
-      {
-        unsigned minChild;
-
-        if (2 * i + 1 <= mSize and mHeap[2 * i + 1] < mHeap[2 * i])
-        {
-          minChild = 2 * i + 1;
-        }
-        else
-        {
-          minChild = 2 * i;
-        }
-
-        if (mHeap[minChild] < mHeap[i])
-        {
-          std::swap(mHeap[minChild], mHeap[i]);
-          i = minChild;
-        }
-        else
-        {
-          break;
-        }
-      }
-
-      return popped;
-
-    }
-
-    T erase(Handle handle) {
-
-
-      /*
-      HOW TO SOLVE IS HERE
-      http://www.mathcs.emory.edu/~cheung/Courses/171/Syllabus/9-BinTree/heap-delete.html
-      */
-      if (mSize == 0)
-      {
-        return 0;
-      }
-      std::swap(handle, mHeap[mSize]);
-
-
-    }
-
-    ~EHeap() {
-      delete [] mHeap;
+        delete [] mHeap;
+        delete [] mHandle;
     }
 };
